@@ -1,5 +1,5 @@
-defaultProject: spartan-card-413618
-defaultLocation: US
-defaultDataset: dataform
-defaultAssertionDataset: dataform_assertions
+defaultProject: "spartan-card-413618"
+defaultLocation: "US"           # must match your BigQuery dataset
+defaultDataset: "dataform"      # tables like 'students' will go here
+defaultAssertionDataset: "dataform_assertions"  # assertions go here
 dataformCoreVersion: 3.0.0

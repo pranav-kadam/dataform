@@ -1,0 +1,18 @@
+config { type: "assertion" }
+
+SELECT *
+FROM (
+  -- rows where id is invalid
+  SELECT * FROM ${ref("students")} WHERE id <= 0
+
+  UNION ALL
+
+  -- rows which have duplicate ids
+  SELECT s.* FROM ${ref("students")} s
+  JOIN (
+    SELECT id FROM ${ref("students")}
+    GROUP BY id
+    HAVING COUNT(*) > 1
+  ) dup USING (id)
+) AS violations
+LIMIT 5

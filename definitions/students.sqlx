@@ -1,0 +1,24 @@
+config {
+  type: "table",
+  description: "Sample students table (10 rows) with built-in assertions",
+  assertions: {
+    uniqueKey: ["id"],
+    rowConditions: [
+      "id > 0"
+    ]
+  }
+}
+
+SELECT *
+FROM UNNEST([
+  STRUCT(1  AS id, 'Aditi'  AS first_name, 'Kumar'  AS last_name, 92 AS mark, 'A' AS Grade),
+  STRUCT(2  AS id, 'Ravi'   AS first_name, 'Patel'  AS last_name, 85 AS mark, 'A' AS Grade),
+  STRUCT(3  AS id, 'Sneha'  AS first_name, 'Shah'   AS last_name, 78 AS mark, 'B' AS Grade),
+  STRUCT(4  AS id, 'Arjun'  AS first_name, 'Menon'  AS last_name, 66 AS mark, 'C' AS Grade),
+  STRUCT(5  AS id, 'Isha'   AS first_name, 'Verma'  AS last_name, 74 AS mark, 'B' AS Grade),
+  STRUCT(6  AS id, 'Karan'  AS first_name, 'Joshi'  AS last_name, 55 AS mark, 'D' AS Grade),
+  STRUCT(7  AS id, 'Meera'  AS first_name, 'Desai'  AS last_name, 88 AS mark, 'A' AS Grade),
+  STRUCT(8  AS id, 'Vikram' AS first_name, 'Rao'    AS last_name, 69 AS mark, 'C' AS Grade),
+  STRUCT(9  AS id, 'Pooja'  AS first_name, 'Nair'   AS last_name, 92 AS mark, 'A' AS Grade),
+  STRUCT(10 AS id, 'Sahil'  AS first_name, 'Khan'   AS last_name, 47 AS mark, 'F' AS Grade)
+]) AS s
